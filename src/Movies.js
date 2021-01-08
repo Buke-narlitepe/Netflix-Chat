@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import axios from "./axios";
 
+const secrets = require("../secrets.json");
+
 export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -10,7 +12,7 @@ export default function Movies() {
         setLoading(true);
         axios
             .get(
-                `https://imdb-api.com/en/API/Top250Movies/k_dqqxhvuq
+                `https://imdb-api.com/en/API/Top250Movies/${secrets.IMDB_KEY}
                 `
             )
             .then((data) => {
